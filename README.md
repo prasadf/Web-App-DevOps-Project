@@ -56,7 +56,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 ## Delivery Date Feature: Addition and Reversion
 ###Changes Made
 1. **Addition of Delivery Date Feature
-### Files Modified
+**Files Modified**
 *'app.py'
 *'templates\template.html
 # Description
