@@ -57,18 +57,20 @@ To run the application, you simply need to run the `app.py` script in this repos
 
 ### Changes Made
 1. **Addition of Delivery Date Feature<br>
-- **Files Modified:** 'app.py' and templates\template.html.
+-- **Files Modified:** 'app.py' and templates\template.html.
 
-- **Description:** The delivery date feature was added to enhance the functionality of the web app.
+-- **Description:** The delivery date feature was added to enhance the functionality of the web app.
 The feature aimed to display the expected delivery date for orders placed through the app. 
 
-- **Implementation Details:**  <br>
-2. **Addition of Delivery Date Feature<br><br>
-- **Files Modified:** 'app.py' and templates\template.html.
+-- **Implementation Details:**  In 'app.py' and template.html, delivery date was added.
+  
+2. **Reversion of Delivery Date Feature<br>
+-- **Files Modified:** 'app.py' and templates\template.html.
 
-- **Description:** Due to unforeseen complications or changes in project requirements, the delivery date feature was reverted.
+-- **Description:** Due to unforeseen complications or changes in project requirements, the delivery date feature was reverted.
 
-- **Implementation Details:** 
+-- **Reason for Reversion:** No longer necessary in the backend database.
+-- **Action Taken:** In 'app.py', the code related to delivery date was removed. In template.html, any HTML elements or code related to displaying the delivery date were removed.
 
 ## Contributors 
 
