@@ -54,19 +54,21 @@ To run the application, you simply need to run the `app.py` script in this repos
 - **Database:** The application employs an Azure SQL Database as its database system to store order-related data.
 
 ## Delivery Date Feature: Addition and Reversion
-###Changes Made
-1. **Addition of Delivery Date Feature<br><br>
-**Files Modified**
-- **'app.py'**
-- **'templates\template.html**
-**Description**
-The delivery date feature was added to enhance the functionality of the web app.
-The feature aimed to display the expected delivery date for orders placed through the app. 
-2. Reversion of Delivery Date Feature<br><br>
-  **Files Modified**
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+### Changes Made
+1. **Addition of Delivery Date Feature<br><br>
+- **Files Modified:** 'app.py' and templates\template.html.
+
+- **Description:** The delivery date feature was added to enhance the functionality of the web app.
+The feature aimed to display the expected delivery date for orders placed through the app. 
+
+- **Implementation Details:**  <br><br>
+2. **Addition of Delivery Date Feature<br><br>
+- **Files Modified:** 'app.py' and templates\template.html.
+
+- **Description:** Due to unforeseen complications or changes in project requirements, the delivery date feature was reverted.
+
+- **Implementation Details:** 
 
 ## Contributors 
 
