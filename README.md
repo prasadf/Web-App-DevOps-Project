@@ -59,7 +59,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 **Files Modified**
 - **'app.py'**
 - **'templates\template.html**
-# Description
+**Description**
 The delivery date feature was added to enhance the functionality of the web app.
 The feature aimed to display the expected delivery date for orders placed through the app. 
 2. **Reversion of Delivery Date Feature
