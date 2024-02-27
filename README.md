@@ -56,7 +56,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 ## Delivery Date Feature: Addition and Reversion
 
 ### Changes Made
-1. **Addition of Delivery Date Feature<br>
+1. Addition of Delivery Date Feature<br>
    - **Files Modified:** 'app.py' and templates\template.html.
 
    - **Description:** The delivery date feature was added to enhance the functionality of the web app.
@@ -64,7 +64,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 
   - **Implementation Details:**  In 'app.py' and template.html, delivery date was added.
   
-2. **Reversion of Delivery Date Feature<br>
+2. Reversion of Delivery Date Feature<br>
    - **Files Modified:** 'app.py' and templates\template.html.
 
    - **Description:** Due to unforeseen complications or changes in project requirements, the delivery date feature was reverted.
