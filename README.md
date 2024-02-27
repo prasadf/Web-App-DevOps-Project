@@ -102,11 +102,11 @@ To run the application, you simply need to run the `app.py` script in this repos
   - 'docker push pat67/web-app-img:latest': Push a Docker image to Docker Hub.
 
 ## Image Information
-- **Image Name:** web-app-img
-- **Tags:** V1 (or latest)
-- **Instructions for Use:**
-  - Run the container with docker run -d -p 5000:5000 web-app-img.
-  - Access the application at http://localhost:5000.
+  - **Image Name:** web-app-img
+  - **Tags:** V1 (or latest)
+  - **Instructions for Use:**
+    - Run the container with docker run -d -p 5000:5000 web-app-img.
+    - Access the application at http://localhost:5000.
 
 ## Contributors 
 
