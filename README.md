@@ -74,32 +74,32 @@ To run the application, you simply need to run the `app.py` script in this repos
 
 ## Containerization Process Documentation
 ### Steps to Containerize the Application
-1. Identify Application Dependencies:
+1. **Identify Application Dependencies:**
    - List all the dependencies required for the application to run.
-2. Create Dockerfile:
+2. **Create Dockerfile:**
    - Define Dockerfile which specifies the environment and dependencies to run the application.
    - Dockerfile
      
-3. Build Docker Image:
+3. **Build Docker Image:**
    - Use the Docker build command to create a Docker image based on the Dockerfile.
    - Example: docker build -t web-app-img .
-4. Run Docker Container:
+4. **Run Docker Container:**
    - Start a Docker container using the built image.
    - Example: docker run -d -p 5000:5000 web-app-img
 
 ## Docker Commands Documentation
 1. **Building Docker Image:**
-  - 'docker build -t web-app-img .': Build a Docker image based on the Dockerfile in the current directory.
-  - '-t': Tag the image with a name.
+    - 'docker build -t web-app-img .': Build a Docker image based on the Dockerfile in the current directory.
+    - '-t': Tag the image with a name.
 2. **Running Containers:**
-  - 'docker run -d -p 5000:5000 web-app-img': Start a Docker container in detached mode, mapping a host port to a container port.
-  - '-d': Run the container in detached mode.
-  - '-p': Specify port mapping.
+    - 'docker run -d -p 5000:5000 web-app-img': Start a Docker container in detached mode, mapping a host port to a container port.
+    - '-d': Run the container in detached mode.
+    - '-p': Specify port mapping.
 
 3. **Tagging Docker Images:**
-  - 'docker tag web-app-img pat67/web-app-img:V1': Tag a Docker image to prepare it for pushing to a registry.
+    - 'docker tag web-app-img pat67/web-app-img:V1': Tag a Docker image to prepare it for pushing to a registry.
 4. **Pushing Images to Docker Hub:**
-  - 'docker push pat67/web-app-img:latest': Push a Docker image to Docker Hub.
+    - 'docker push pat67/web-app-img:latest': Push a Docker image to Docker Hub.
 
 ## Image Information
   - **Image Name:** web-app-img
