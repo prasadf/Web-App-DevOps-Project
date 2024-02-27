@@ -72,6 +72,42 @@ To run the application, you simply need to run the `app.py` script in this repos
    - **Reason for Reversion:** No longer necessary in the backend database.
    - **Action Taken:** In 'app.py', the code related to delivery date was removed. In template.html, any HTML elements or code related to displaying the delivery date were removed.
 
+## Containerization Process Documentation
+### Steps to Containerize the Application
+1. Identify Application Dependencies:
+   - List all the dependencies required for the application to run.
+2. Create Dockerfile:
+   - Define Dockerfile which specifies the environment and dependencies to run the application.
+   - Dockerfile
+     
+3. Build Docker Image:
+   - Use the Docker build command to create a Docker image based on the Dockerfile.
+   - Example: docker build -t web-app-img .
+4. Run Docker Container:
+   - Start a Docker container using the built image.
+   - Example: docker run -d -p 5000:5000 web-app-img
+
+## Docker Commands Documentation
+1. **Building Docker Image:**
+  - 'docker build -t web-app-img .': Build a Docker image based on the Dockerfile in the current directory.
+  - '-t': Tag the image with a name.
+2. **Running Containers:**
+  - 'docker run -d -p 5000:5000 web-app-img': Start a Docker container in detached mode, mapping a host port to a container port.
+  - '-d': Run the container in detached mode.
+  - '-p': Specify port mapping.
+
+3. **Tagging Docker Images:**
+  - 'docker tag web-app-img pat67/web-app-img:V1': Tag a Docker image to prepare it for pushing to a registry.
+4. **Pushing Images to Docker Hub:**
+  - 'docker push pat67/web-app-img:latest': Push a Docker image to Docker Hub.
+
+## Image Information
+- **Image Name:** web-app-img
+- **Tags:** V1 (or latest)
+- **Instructions for Use:**
+  - Run the container with docker run -d -p 5000:5000 web-app-img.
+  - Access the application at http://localhost:5000.
+
 ## Contributors 
 
 - [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))
