@@ -119,16 +119,33 @@ This documentation outlines the process of defining networking services using In
 2. **Define the Network Module Input Variables:**
    - Inside the networking module directory create a **variables.tf** file. 
    - Define the following variables:
-       - resource_group_name - The name of the Azure Resource Group where the networking resources will be deployed in. The variable should be of type string and have a default value.
-       - location - Specifies The Azure region where the networking resources will be deployed to. The variable should be of type string and have a default value.
-       - vnet_address_space - Specifies the address space for the Virtual Network (VNet). The variable should be of type list(string) and have a default value.
+       - **resource_group_name** - The name of the Azure Resource Group where the networking resources will be deployed in. The variable should be of type string and have a default value.
+       - **location** - Specifies The Azure region where the networking resources will be deployed to. The variable should be of type string and have a default value.
+       - **vnet_address_space** - Specifies the address space for the Virtual Network (VNet). The variable should be of type list(string) and have a default value.
      
-3. **Build Docker Image:**
-   - Use the Docker build command to create a Docker image based on the Dockerfile.
-   - Example: docker build -t web-app-img .
-4. **Run Docker Container:**
-   - Start a Docker container using the built image.
-   - Example: docker run -d -p 5000:5000 web-app-img
+3. **Define Networking Resources and NSG Rules:**
+   - Inside the networking module directory create a **main.tf** file and define the essential networking resources for an AKS cluster as follows. 
+     - Azure Resource Group: Name this resource by referencing the **resource_group_name** variable created earlier
+     - Virtual Network (VNet): **aks-vnet**
+     - Control Plane Subnet: **control-plane-subnet**
+     - Worker Node Subnet: **worker-node-subnet**
+     - Network Security Group (NSG): **aks-nsg**
+   - Within the NSG, define two inbound rules:
+       - one to allow traffic to the kube-apiserver (named kube-apiserver-rule) and
+       - one to allow inbound SSH traffic (named ssh-rule).
+       - Both rules should only allow inbound traffic from your public IP address.
+4. **Define the Networking Module Output Variables:**
+   - Inside the networking module directory create a **outputs.tf** file 
+   - Define the following output variables:
+     - **vnet_id** - variable that will store the ID of the previously created VNet.
+     - **control_plane_subnet_id** - variable that will hold the ID of the control plane subnet within the VNet.
+     - **worker_node_subnet_id** - variable that will store the ID of the worker node subnet within the VNet.
+     - **networking_resource_group_name** - variable that will provide the name of the Azure Resource Group where the networking resources were provisioned in.
+     - **aks_nsg_id** - variable that will store the ID of the Network Security Group (NSG).
+     - 
+4. **Initialise the Newtworking Module:**
+   - Initialise the networking module to ensure it is ready to use within your main project. 
+   - 'terraform init'
 
 ## Contributors 
 
