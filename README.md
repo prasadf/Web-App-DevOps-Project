@@ -116,9 +116,12 @@ This documentation outlines the process of defining networking services using In
    - The project should be organized into two Terraform modules:
        - **networking-module**: for provisioning the necessary Azure Networking Services for an AKS cluster
        - **aks-cluster-module**: for provisioning the Kubernetes cluster itself.
-2. **Create Dockerfile:**
-   - Define Dockerfile which specifies the environment and dependencies to run the application.
-   - Dockerfile
+2. **Define the Network Module Input Variables:**
+   - Inside the networking module directory create a **variables.tf** file. 
+   - Define the following variables:
+       - resource_group_name - The name of the Azure Resource Group where the networking resources will be deployed in. The variable should be of type string and have a default value.
+       - location - Specifies The Azure region where the networking resources will be deployed to. The variable should be of type string and have a default value.
+       - vnet_address_space - Specifies the address space for the Virtual Network (VNet). The variable should be of type list(string) and have a default value.
      
 3. **Build Docker Image:**
    - Use the Docker build command to create a Docker image based on the Dockerfile.
