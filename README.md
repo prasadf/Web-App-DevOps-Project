@@ -76,6 +76,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 ### Steps to Containerize the Application
 1. **Identify Application Dependencies:**
    - List all the dependencies required for the application to run.
+  
 2. **Create Dockerfile:**
    - Define Dockerfile which specifies the environment and dependencies to run the application.
    - Dockerfile
@@ -83,6 +84,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 3. **Build Docker Image:**
    - Use the Docker build command to create a Docker image based on the Dockerfile.
    - Example: docker build -t web-app-img .
+ 
 4. **Run Docker Container:**
    - Start a Docker container using the built image.
    - Example: docker run -d -p 5000:5000 web-app-img
@@ -91,6 +93,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 1. **Building Docker Image:**
     - 'docker build -t web-app-img .': Build a Docker image based on the Dockerfile in the current directory.
     - '-t': Tag the image with a name.
+ 
 2. **Running Containers:**
     - 'docker run -d -p 5000:5000 web-app-img': Start a Docker container in detached mode, mapping a host port to a container port.
     - '-d': Run the container in detached mode.
@@ -98,6 +101,7 @@ To run the application, you simply need to run the `app.py` script in this repos
 
 3. **Tagging Docker Images:**
     - 'docker tag web-app-img pat67/web-app-img:V1': Tag a Docker image to prepare it for pushing to a registry.
+ 
 4. **Pushing Images to Docker Hub:**
     - 'docker push pat67/web-app-img:latest': Push a Docker image to Docker Hub.
 
@@ -116,6 +120,7 @@ This documentation outlines the process of defining networking services using In
    - The project should be organized into two Terraform modules:
        - **networking-module**: for provisioning the necessary Azure Networking Services for an AKS cluster
        - **aks-cluster-module**: for provisioning the Kubernetes cluster itself.
+ 
 2. **Define the Network Module Input Variables:**
    - Inside the networking module directory create a **variables.tf** file. 
    - Define the following variables:
@@ -134,6 +139,7 @@ This documentation outlines the process of defining networking services using In
        - one to allow traffic to the kube-apiserver (named kube-apiserver-rule) and
        - one to allow inbound SSH traffic (named ssh-rule).
        - Both rules should only allow inbound traffic from your public IP address.
+ 
 4. **Define the Networking Module Output Variables:**
    - Inside the networking module directory create a **outputs.tf** file 
    - Define the following output variables:
@@ -142,7 +148,7 @@ This documentation outlines the process of defining networking services using In
      - **worker_node_subnet_id** - variable that will store the ID of the worker node subnet within the VNet.
      - **networking_resource_group_name** - variable that will provide the name of the Azure Resource Group where the networking resources were provisioned in.
      - **aks_nsg_id** - variable that will store the ID of the Network Security Group (NSG).
-     - 
+       
 4. **Initialise the Newtworking Module:**
    - Initialise the networking module to ensure it is ready to use within your main project. 
    - 'terraform init'
