@@ -108,6 +108,25 @@ To run the application, you simply need to run the `app.py` script in this repos
     - Run the container with docker run -d -p 5000:5000 web-app-img.
     - Access the application at http://localhost:5000.
 
+## Defining Networking Services with Terraform
+This documentation outlines the process of defining networking services using Infrastructure as Code (IaC) with Terraform. 
+### Steps to provision the necessary networking services on Azure.
+1. **Create Terraform Project and Modules:**
+   - Create a project folder with a descriptive name for your Terraform project, such as **aks-terraform**.
+   - The project should be organized into two Terraform modules:
+       - **networking-module**: for provisioning the necessary Azure Networking Services for an AKS cluster
+       - **aks-cluster-module**: for provisioning the Kubernetes cluster itself.
+2. **Create Dockerfile:**
+   - Define Dockerfile which specifies the environment and dependencies to run the application.
+   - Dockerfile
+     
+3. **Build Docker Image:**
+   - Use the Docker build command to create a Docker image based on the Dockerfile.
+   - Example: docker build -t web-app-img .
+4. **Run Docker Container:**
+   - Start a Docker container using the built image.
+   - Example: docker run -d -p 5000:5000 web-app-img
+
 ## Contributors 
 
 - [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))
