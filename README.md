@@ -153,6 +153,30 @@ This documentation outlines the process of defining networking services using In
    - Initialise the networking module to ensure it is ready to use within your main project. 
    - 'terraform init'
 
+## Defining an AKS Cluster with IaC
+To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as Code (IaC), we've followed these steps:
+1. **Define Input Variables:**
+  - Created a variables.tf file inside the cluster module directory to define input variables.
+  - These variables allow customisation of various aspects of the AKS cluster, including cluster name, cluster location, DNS prefix, Kubernetes version, service principal client ID, and service principal secret.
+  - Additionally, included output variables from the networking module such as resource group name, VNet ID, AKS NSG ID, control plane subnet ID, and worker node subnet ID.
+
+2. **Define the Cluster Resources:**
+  - In the main.tf file within the cluster module directory, defined Azure resources for provisioning the AKS cluster.
+  - Created the AKS cluster, specified the node pool, and defined the service principal.
+  - Used the input variables defined in Task 1 to specify the necessary arguments.
+
+3. **Define Cluster Module Output Variables:**
+  - Created an outputs.tf file inside the cluster module to define output variables capturing essential information about the provisioned AKS cluster.
+  - Defined output variables for AKS cluster name, cluster ID, and kubeconfig file.
+
+4. **Initialise the Cluster:**
+  - Initialised the cluster module to ensure it is ready to use within the main project.
+  - Used the terraform init command in the cluster module directory.
+
+5. **Documentation:**
+  - Updated the README file in the project repository to document the process of provisioning an AKS cluster using IaC.
+  - Included steps taken to define the cluster and documented the input and output variables used in this module.
+
 ## Contributors 
 
 - [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))

@@ -1,4 +1,4 @@
 # ignore following directories or files
 
-.terraform/
-.tfstate
+*.terraform/
+*terraform.tfstate
