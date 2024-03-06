@@ -225,7 +225,7 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 
 ## Kubernettes Deployment to AKS
 
-1. Deployment and Service Manifests
+**1. Deployment and Service Manifests**
 - **Deployment Manifest**:
 - Create a Kubernetes manifest file named `application-manifest.yaml`.
 - Define a Deployment named `flask-app-deployment` to deploy the containerized web application.
@@ -241,12 +241,12 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 - Configure the service to use TCP protocol on port 80, with targetPort set to 5000.
 - Set the service type to ClusterIP for internal service within the AKS cluster.
 
-2. Deployment Strategy
+**2. Deployment Strategy**
 - Chose the Rolling Updates deployment strategy to ensure seamless application updates while maintaining availability. 
 - This strategy allows one pod to deploy while another remains available, minimising downtime and ensuring continuous service availability. 
 - It aligns with our application's requirements for reliability and scalability.
 
-3. Testing and Validation
+**3. Testing and Validation**
 **Testing Process**:
 - Verify the status and details of pods and services within the AKS cluster.
 - Initiate port forwarding to a local machine using `kubectl port-forward <pod-name> 5000:5000`.
@@ -257,7 +257,7 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 - Ensured that the pods were running and services were correctly exposed.
 - Confirmed the functionality and reliability of the application within the AKS cluster.
 
-4. Distribution Plan
+**4. Distribution Plan**
 **To distribute the application to other internal users:**
 - Implement an Ingress controller to expose the application securely to internal users without relying on port forwarding.
 - Utilise Kubernetes RBAC (Role-Based Access Control) to manage access permissions within the cluster.
