@@ -226,7 +226,7 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 ## Kubernettes Deployment to AKS
 
 **1. Deployment and Service Manifests**
-- **Deployment Manifest**:
+  **Deployment Manifest**:
 - Create a Kubernetes manifest file named `application-manifest.yaml`.
 - Define a Deployment named `flask-app-deployment` to deploy the containerized web application.
 - Specifie two replicas for scalability and high availability.
@@ -235,7 +235,7 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 - Expose port 5000 for communication within the AKS cluster.
 - Implement Rolling Updates deployment strategy for seamless updates.
 
-- **Service Manifest**:
+  **Service Manifest**:
 - Add a service named `flask-app-service` for internal communication within the AKS cluster.
 - Align selector with the labels of Deployment pods (`app: flask-app`).
 - Configure the service to use TCP protocol on port 80, with targetPort set to 5000.
