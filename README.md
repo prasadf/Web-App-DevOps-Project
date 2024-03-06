@@ -247,6 +247,7 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 - It aligns with our application's requirements for reliability and scalability.
 
 **3. Testing and Validation**
+  
 **Testing Process**:
 - Verify the status and details of pods and services within the AKS cluster.
 - Initiate port forwarding to a local machine using `kubectl port-forward <pod-name> 5000:5000`.
@@ -258,6 +259,7 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 - Confirmed the functionality and reliability of the application within the AKS cluster.
 
 **4. Distribution Plan**
+  
 **To distribute the application to other internal users:**
 - Implement an Ingress controller to expose the application securely to internal users without relying on port forwarding.
 - Utilise Kubernetes RBAC (Role-Based Access Control) to manage access permissions within the cluster.
