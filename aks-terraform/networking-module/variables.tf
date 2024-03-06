@@ -17,3 +17,12 @@ variable "vnet_address_space" {
   type        = list(string)
   default     = ["10.0.0.0/16"]
 }
+
+variable "public_ip_address" {
+  description = "The address space for the Public IP Address."
+  type        = string
+  
+}
+
+
+

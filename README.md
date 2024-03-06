@@ -156,26 +156,73 @@ This documentation outlines the process of defining networking services using In
 ## Defining an AKS Cluster with IaC
 To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as Code (IaC), we've followed these steps:
 1. **Define Input Variables:**
-  - Created a variables.tf file inside the cluster module directory to define input variables.
+  - Create a variables.tf file inside the cluster module directory to define input variables.
   - These variables allow customisation of various aspects of the AKS cluster, including cluster name, cluster location, DNS prefix, Kubernetes version, service principal client ID, and service principal secret.
-  - Additionally, included output variables from the networking module such as resource group name, VNet ID, AKS NSG ID, control plane subnet ID, and worker node subnet ID.
+  - Additionally, include output variables from the networking module such as resource group name, VNet ID, AKS NSG ID, control plane subnet ID, and worker node subnet ID.
 
 2. **Define the Cluster Resources:**
-  - In the main.tf file within the cluster module directory, defined Azure resources for provisioning the AKS cluster.
-  - Created the AKS cluster, specified the node pool, and defined the service principal.
-  - Used the input variables defined in Task 1 to specify the necessary arguments.
+  - In the main.tf file within the cluster module directory, define Azure resources for provisioning the AKS cluster.
+  - Create the AKS cluster, specifie the node pool, and define the service principal.
+  - Use the input variables define in Task 1 to specify the necessary arguments.
 
 3. **Define Cluster Module Output Variables:**
-  - Created an outputs.tf file inside the cluster module to define output variables capturing essential information about the provisioned AKS cluster.
-  - Defined output variables for AKS cluster name, cluster ID, and kubeconfig file.
+  - Create an outputs.tf file inside the cluster module to define output variables capturing essential information about the provisioned AKS cluster.
+  - Define output variables for AKS cluster name, cluster ID, and kubeconfig file.
 
 4. **Initialise the Cluster:**
-  - Initialised the cluster module to ensure it is ready to use within the main project.
-  - Used the terraform init command in the cluster module directory.
+  - Initialise the cluster module to ensure it is ready to use within the main project.
+  - Use the terraform init command in the cluster module directory.
 
 5. **Documentation:**
-  - Updated the README file in the project repository to document the process of provisioning an AKS cluster using IaC.
-  - Included steps taken to define the cluster and documented the input and output variables used in this module.
+  - Update the README file in the project repository to document the process of provisioning an AKS cluster using IaC.
+  - Include steps taken to define the cluster and documented the input and output variables used in this module.
+
+## Creating an AKS Cluster with IaC
+1. **Define Project Main Configuration:**
+  - Create a main.tf file in the aks-terraform directory.
+  - Define Azure provider block for authentication using service principal credentials.
+  - Ensure sensitive information like client_id and client_secret are stored securely using input variables and environment variables.
+
+2. **Integrate the Networking Module**
+  - Integrate networking module to include networking resources like virtual networks and subnets.
+  - Specify input variables:
+    - resource_group_name: Descriptive name for the networking resource group.
+    - location: Azure region for deployment.
+    - vnet_address_space: Address space for the virtual network.
+
+3. **Integrate the Cluster Module**
+  - Integrate the cluster module in the main project configuration file.This step connects the AKS cluster specifications to the main project, as well as allowing you to provision the cluster within the previously defined networking infrastructure.
+  - Define input variables:
+    - cluster_name: Name for the AKS cluster.
+    - location: Azure region for deployment.
+    - dns_prefix: DNS prefix for the AKS cluster.
+    - kubernetes_version: Supported Kubernetes version.
+    - service_principal_client_id 
+    - service_principal_secret: Service principal credentials.
+  - Use output variables from the networking module for other required input variables.
+    - resource_group_name
+    - vnet_id
+    - control_plane_subnet_id
+    - worker_node_subnet_id 
+    - aks_nsg_id
+     
+4. **Apply the Main Configuration**
+  - Initialise Terraform in the project directory.
+  - Apply the Terraform configuration to create the infrastructure.
+  - Ensure secrets are ignored by adding resultant state file to .gitignore.
+   
+5. **Access the AKS Cluster**
+  - Once provisioned, retrieve the kubeconfig file.
+  - Use the Azure CLI to get the AKS cluster credentials.
+    **az aks get-credentials --resource-group <your-resource-group> --name <your-aks-cluster-name>
+  - Connect securely to the AKS cluster to verify successful provisioning and operational status.
+  - Check the status of your nodes you can run kubectl get nodes.
+
+6. **Documentation**
+  - Create detailed documentation explaining main configuration, provider setup, and module integration.
+  - Clarify usage of input variables.
+  - Update the README file in the GitHub repository with the revised documentation.
+
 
 ## Contributors 
 
