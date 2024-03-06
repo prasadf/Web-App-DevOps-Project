@@ -223,6 +223,51 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
   - Clarify usage of input variables.
   - Update the README file in the GitHub repository with the revised documentation.
 
+## Kubernettes Deployment to AKS
+
+1. Deployment and Service Manifests
+- **Deployment Manifest**:
+  - Create a Kubernetes manifest file named `application-manifest.yaml`.
+  - Define a Deployment named `flask-app-deployment` to deploy the containerized web application.
+  - Specifie two replicas for scalability and high availability.
+  - Used labels (`app: flask-app`) to uniquely identify the application and its pods.
+  - Configure the manifest to use the container image hosted on Docker Hub.
+  - Expose port 5000 for communication within the AKS cluster.
+  - Implement Rolling Updates deployment strategy for seamless updates.
+
+- **Service Manifest**:
+  - Add a service named `flask-app-service` for internal communication within the AKS cluster.
+  - Align selector with the labels of Deployment pods (`app: flask-app`).
+  - Configure the service to use TCP protocol on port 80, with targetPort set to 5000.
+  - Set the service type to ClusterIP for internal service within the AKS cluster.
+
+2. Deployment Strategy
+  - Chose the Rolling Updates deployment strategy to ensure seamless application updates while maintaining availability. 
+  - This strategy allows one pod to deploy while another remains available, minimising downtime and ensuring continuous service availability. 
+  - It aligns with our application's requirements for reliability and scalability.
+
+3. Testing and Validation
+- **Testing Process**:
+  - Verify the status and details of pods and services within the AKS cluster.
+  - Initiate port forwarding to a local machine using `kubectl port-forward <pod-name> 5000:5000`.
+  - Accessed the web application locally at http://127.0.0.1:5000.
+  - Thoroughly test the functionality, particularly focusing on the orders table and Add Order functionality.
+   
+- **Validation**:
+  - Ensured that the pods were running and services were correctly exposed.
+  - Confirmed the functionality and reliability of the application within the AKS cluster.
+
+4. Distribution Plan
+  **To distribute the application to other internal users:**
+  - Implement an Ingress controller to expose the application securely to internal users without relying on port forwarding.
+  - Utilise Kubernetes RBAC (Role-Based Access Control) to manage access permissions within the cluster.
+  - Provide documentation and training sessions for internal users on accessing the application via the established Ingress endpoint.
+
+  **For external users:**
+  - Utilise a secure Azure Application gateway or load balancer to expose the application securely.
+  - Implement HTTPS with SSL certificates for encrypted communication.
+  - Implement authentication and authorisation mechanisms, such as Azure Entra ID and RBAC, to ensure secure access based on roles.
+  - Regularly update security configurations and monitor access logs for potential vulnerabilities.
 
 ## Contributors 
 
