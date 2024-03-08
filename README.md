@@ -271,6 +271,45 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 - Implement authentication and authorisation mechanisms, such as Azure Entra ID and RBAC, to ensure secure access based on roles.
 - Regularly update security configurations and monitor access logs for potential vulnerabilities.
 
+## CI/CD Pipeline with Azure DevOps
+
+1. **Azure DevOps Project Setup**
+  - Create a new Azure DevOps project within the Azure DevOps account. 
+  - Log into Azure DevOps with the same email account that's associated with the Azure account.
+
+2. **Azure DevOps Pipeline Initialization**
+  - Configure the source repository for the pipeline using GitHub.
+  - Select the repository containing the application code.
+  - Create the pipeline using a Starter Pipeline template for further customisation.
+
+3. **Azure DevOps-Docker Hub Connection**
+  - Set up a service connection between Azure DevOps and the Docker Hub account, facilitating the seamless integration of the CI/CD pipeline with the Docker Hub container registry as follows:
+    - Create a personal access token on Docker Hub.
+    - Configure an Azure DevOps service connection utilising the Docker Hub token.
+    - Successfully establish the connection between Azure DevOps and Docker Hub.
+
+4. **Pipeline Configuration for Docker Image Build and Push**
+  - Modify the configuration of your pipeline to enable it to build and push a Docker image to Docker Hub. Follow these steps:
+    - Add Docker task with the buildandPush command to the pipeline.
+    - Configure the pipeline to trigger on each push to the main branch.
+    - Run the pipeline and test the Docker image functionality locally. 
+
+5. **Azure DevOps-AKS Connection Establishment**
+  - Create and configure an AKS service connection within Azure DevOps.
+  - Establish a secure link between the CI/CD pipeline and the AKS cluster.
+
+6. **Pipeline Configuration for Kubernetes Deployment**
+  - Modify the CI/CD pipeline to incorporate the Deploy to Kubernetes task with the deploy kubectl command.
+  - Leverage the deployment manifest available in the application repository.
+  - Utilise the established AKS connection for automatic deployment to the AKS cluster.
+
+7. **Testing and Validation of CI/CD Pipeline**
+  - Monitor the status of pods within the AKS cluster to confirm correct creation.
+  - Initiate port forwarding using kubectl to securely access the application running on AKS.
+  - Test the functionality of the application to ensure correct operation, validating the CI/CD pipeline effectiveness.
+
+
+
 ## Contributors 
 
 - [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))
