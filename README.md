@@ -7,8 +7,17 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Technology Stack](#technology-stack)
+- [Delivery Date Feature: Addition and Reversion](#delivery-date-feature-addition-and-reversion)
+- [Containerisation Process Documentation](#containerisation-process-documentation)
+- [Docker-Commands-Documentation](#docker-commands-documentation)
+- [Defining-Networking-Services-with-Terraform](#defining-networking-services-with-terraform)
+- [Defining an AKS Cluster with IaC](#defining-an-aks-cluster-with-iac)
+- [Creating an AKS Cluster with IaC](#creating-an-aks-cluster-with-iac)
+- [Kubernettes Deployment to AKS](#kubernettes-deployment-to-aks)
+- [CI/CD Pipeline with Azure DevOps](#ci/cd-pipeline-with-azure-devops)
+- [Image Information](#image-information)
 - [Contributors](#contributors)
-- [License](#license)
+- [License](#licence)
 
 ## Features
 
