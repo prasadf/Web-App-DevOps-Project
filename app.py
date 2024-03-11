@@ -12,24 +12,18 @@ import os
 app = Flask(__name__)
 
 # database connection 
+# Replace these values with your Key Vault details
+key_vault_url = "https://key-vault-pra.vault.azure.net/"
 
-# Replace these values with your Key Vault details
-key_vault_url = "https://your-key-vault-name.vault.azure.net/"
-
-# Set up Azure Key Vault client with Managed Identity
+# Set up Azure Key Vault client with Managed Identity
 credential = ManagedIdentityCredential()
 secret_client = SecretClient(vault_url=key_vault_url, credential=credential)
 
-# Access the secret values from Key Vault
-secret = secret_client.get_secret("secret-name")
-
-# Access the secret values
-secret_value = secret.value
-
-# Your application code can now use the retrieved secrets securely
-
-
-driver= '{ODBC Driver 18 for SQL Server}'
+# Access the secret values from Key Vault
+database = secret_client.get_secret("database-name").value
+server = secret_client.get_secret("server-name").value
+username = secret_client.get_secret("server-username").value
+password = secret_client.get_secret("server-password").value
 
 # Create the connection string
 connection_string=f'Driver={driver};\
