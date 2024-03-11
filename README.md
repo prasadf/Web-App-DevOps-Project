@@ -334,9 +334,13 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
    - Click **Metrics Explorer**.
    - Add charts for:
      - Average Node CPU Usage
+     ![Average Node CPU Usage](images/average-node-cpu-usage.png)
      - Average Pod Count
+     ![Average Pod Count](images/average-pod-count.png)
      - Used Disk Percentage
+     ![Used Disk Percentage](images/bytes-read-and-written-per-second.png)
      - Bytes Read and Written per Second
+     ![Bytes Read and Written per Second](images/avg-byte-read-write-per-sec.png)
 3. **Log Analytics Configuration**
 Configure Log Analytics to execute and save the following logs:
 
