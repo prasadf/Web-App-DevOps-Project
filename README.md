@@ -320,11 +320,11 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 ## AKS Cluster Monitoring
 
 1. **Enable Container Insights for AKS**
- - Navigate to AKS cluster resource.
- - Select **Monitoring** from the left-hand menu.
- - Click Enable **Container Insights**.
- - Follow the prompts to enable Container Insights, ensuring Managed Identity is enabled on the cluster and necessary permissions are set for the Service Principal.
- - Use following command to enable managed identity on the AKS cluster. 
+   - Navigate to AKS cluster resource.
+   - Select **Monitoring** from the left-hand menu.
+   - Click Enable **Container Insights**.
+   - Follow the prompts to enable Container Insights, ensuring Managed Identity is enabled on the cluster and necessary permissions are set for the Service Principal.
+   - Use following command to enable managed identity on the AKS cluster. 
     ```
      az aks update -g {resource-group-name} -n {aks-cluster-name} --enable-managed-identity
      ```
