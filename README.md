@@ -317,6 +317,53 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
   - Initiate port forwarding using kubectl to securely access the application running on AKS.
   - Test the functionality of the application to ensure correct operation, validating the CI/CD pipeline effectiveness.
 
+## AKS Cluster Monitoring
+
+1. **Enable Container Insights for AKS**
+ - Navigate to AKS cluster resource.
+ - Select **Monitoring** from the left-hand menu.
+ - Click Enable **Container Insights**.
+ - Follow the prompts to enable Container Insights, ensuring Managed Identity is enabled on the cluster and necessary permissions are set for the Service Principal.
+ - Use following command to enable managed identity on the AKS cluster. 
+    ```
+     az aks update -g {resource-group-name} -n {aks-cluster-name} --enable-managed-identity
+     ```
+2. **Create Metrics Explorer Charts**
+   - Navigate to AKS cluster resource.
+   - Select **Monitoring** from the left-hand menu.
+   - Click **Metrics Explorer**.
+   - Add charts for:
+     - Average Node CPU Usage
+     - Average Pod Count
+     - Used Disk Percentage
+     - Bytes Read and Written per Second
+3. **Log Analytics Configuration**
+Configure Log Analytics to execute and save the following logs:
+
+   - **Average Node CPU Usage Percentage per Minute**: This configuration captures data on node-level usage at a granular level, with logs recorded per minute
+
+   - **Average Node Memory Usage Percentage per Minute**: Similar to CPU usage, tracking memory usage at node level allows you to detect memory-related performance concerns and efficiently allocate resources
+
+   - **Pods Counts with Phase**: This log configuration provides information on the count of pods with different phases, such as Pending, Running, or Terminating. It offers insights into pod lifecycle management and helps ensure the cluster's workload is appropriately distributed.
+
+   - **Find Warning Value in Container Logs**: By configuring Log Analytics to search for `warning` values in container logs, you proactively detect issues or errors within your containers, allowing for prompt troubleshooting and issues resolution
+
+
+   - **Monitoring Kubernetes Events**: Monitoring Kubernetes events, such as pod scheduling, scaling activities, and errors, is essential for tracking the overall health and stability of the cluster
+
+4. **Set Up Disk Used Percentages Alarm**
+   - Navigate to AKS cluster resource.
+   - Select **Monitoring** from the left-hand menu.
+   - Click **Alerts**.
+   - Configure an alert rule to trigger when used disk percentage exceeds 90%, with check interval of 5 minutes and loopback period of 15 minutes. Set email notifications for alarm triggers.
+    
+5. **Modify CPU and Memory Alert Rules**
+   - Navigate to AKS cluster resource.
+   - Select **Monitoring** from the left-hand menu.
+   - Click **Alerts**.
+   - Adjust existing alert rules for CPU and memory to trigger when they exceed 80%.
+   
+ 
 
 
 ## Contributors 
