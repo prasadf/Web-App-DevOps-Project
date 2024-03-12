@@ -7,14 +7,18 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Technology Stack](#technology-stack)
-- [Delivery Date Feature: Addition and Reversion](#delivery-date-feature-addition-and-reversion)
-- [Containerisation Process Documentation](#containerisation-process-documentation)
-- [Docker-Commands-Documentation](#docker-commands-documentation)
-- [Defining-Networking-Services-with-Terraform](#defining-networking-services-with-terraform)
-- [Defining an AKS Cluster with IaC](#defining-an-aks-cluster-with-iac)
-- [Creating an AKS Cluster with IaC](#creating-an-aks-cluster-with-iac)
-- [Kubernettes Deployment to AKS](#kubernettes-deployment-to-aks)
-- [CI/CD Pipeline with Azure DevOps](#ci/cd-pipeline-with-azure-devops)
+- [Architecture](#architecture)
+- [Creating an Azure End-to-End DevOps Pipeline](#creating-an-azure-end-to-End-devOps-pipeline)
+  - [Delivery Date Feature: Addition and Reversion](#delivery-date-feature-addition-and-reversion)
+  - [Containerisation Process Documentation](#containerisation-process-documentation)
+  - [Docker-Commands-Documentation](#docker-commands-documentation)
+  - [Defining-Networking-Services-with-Terraform](#defining-networking-services-with-terraform)
+  - [Defining an AKS Cluster with IaC](#defining-an-aks-cluster-with-iac)
+  - [Creating an AKS Cluster with IaC](#creating-an-aks-cluster-with-iac)
+  - [Kubernettes Deployment to AKS](#kubernettes-deployment-to-aks)
+  - [CI/CD Pipeline with Azure DevOps](#ci/cd-pipeline-with-azure-devops)
+  - [AKS Cluster Monitorings](#aks-cluster-monitoring)
+  - [AKS Integration with Azure Key Vault for Secrets Management](#aks-integration-with-azure-key-vault-for-secrets-management)
 - [Image Information](#image-information)
 - [Contributors](#contributors)
 - [License](#licence)
@@ -61,6 +65,12 @@ To run the application, you simply need to run the `app.py` script in this repos
 - **Frontend:** The user interface is designed using HTML, CSS, and JavaScript to ensure a smooth and intuitive user experience.
 
 - **Database:** The application employs an Azure SQL Database as its database system to store order-related data.
+
+- **Deployment:**
+  - **Containerisation:** This application uses Docker for containerisation to offer a flexible and consistent deployment solution.
+  - **Distribution:** This application uses Docker Hub for distribution.
+  - **Infrastructure as Code (IaC):** This application uses Terraform for IaC.
+  - **Deployment automation, scaling, and management of containerised application:** This application uses Kubernetes (K8s) for deployment automation, scaling, and management of containerisation.
 
 ## Architecture
 
@@ -370,10 +380,33 @@ Configure Log Analytics to execute and save the following logs:
    - Select **Monitoring** from the left-hand menu.
    - Click **Alerts**.
    - Adjust existing alert rules for CPU and memory to trigger when they exceed 80%.
+
+## AKS Integration with Azure Key Vault for Secrets Management
+This Section outlines the steps required to integrate Azure Kubernetes Service (AKS) with Azure Key Vault for secure secrets management within your application. By leveraging Azure Key Vault, sensitive information such as database credentials can be securely stored and accessed by your application running on AKS.
+
+1. **Creating an Azure Key Vault**
+Begin by creating an Azure Key Vault where sensitive information will be securely stored.
+
+2. **Assign Key Vault Administrator Role**
+Assign the Key Vault Administrator role to your Microsoft Entra ID user to grant necessary permissions for managing secrets within the Key Vault.
+
+3. **Create Secrets in Key Vault**
+Create secrets in the Key Vault for storing sensitive credentials used within the application, including server name, username, password, and database name.
+
+4. **Enable Managed Identity for AKS**
+Enable managed identity for the AKS cluster to allow it to authenticate and interact securely with the Key Vault.
+
+5. **Assign Permissions to Managed Identity**
+Assign the Key Vault Secrets Officer role to the managed identity associated with AKS to enable it to retrieve and manage secrets.
+
+6. **Update the Application Code**
+Integrate Azure Identity and Azure Key Vault libraries into the Python application code to enable communication with Azure Key Vault.
+
+7. **End-to-End Testing AKS**
+Deploy the modified application to the AKS cluster using Azure DevOps CI/CD pipeline. Conduct end-to-end testing within the AKS environment to validate the functionality, including secure access to Key Vault secrets.
+
+
    
- 
-
-
 ## Contributors 
 
 - [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))
