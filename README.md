@@ -102,31 +102,62 @@ To run the application, you simply need to run the `app.py` script in this repos
   
 2. **Create Dockerfile:**
    - Define Dockerfile which specifies the environment and dependencies to run the application.
-   - Dockerfile
+   - Example Dockerfile:
+     ```
+      FROM python:3.9
+      WORKDIR /app
+      COPY requirements.txt .
+      RUN pip install -r requirements.txt
+      COPY . .
+      CMD ["python", "app.py"]
+
+     ```
      
 3. **Build Docker Image:**
    - Use the Docker build command to create a Docker image based on the Dockerfile.
-   - Example: docker build -t web-app-img .
+   - Example: 
+
+     ```
+      docker build -t myapp .
+     ```
  
 4. **Run Docker Container:**
    - Start a Docker container using the built image.
-   - Example: docker run -d -p 5000:5000 web-app-img
+   - Example: 
+     ```
+     docker run -d -p 8080:80 myapp
+     ```
 
 ## Docker Commands Documentation
 1. **Building Docker Image:**
-    - 'docker build -t web-app-img .': Build a Docker image based on the Dockerfile in the current directory.
-    - '-t': Tag the image with a name.
+    - Build a Docker image based on the Dockerfile in the current directory:
+    ```
+      docker build -t <image_name> .
+    ```
+      - '-t': Tag the image with a name.
  
 2. **Running Containers:**
-    - 'docker run -d -p 5000:5000 web-app-img': Start a Docker container in detached mode, mapping a host port to a container port.
-    - '-d': Run the container in detached mode.
-    - '-p': Specify port mapping.
+    - Start a Docker container in detached mode, mapping a host port to a container port:
+      ```
+        docker run -d -p <host_port>:<container_port> <image_name> 
+      ```
+      - '-d': Run the container in detached mode.
+      - '-p': Specify port mapping.
 
 3. **Tagging Docker Images:**
-    - 'docker tag web-app-img pat67/web-app-img:V1': Tag a Docker image to prepare it for pushing to a registry.
- 
+    - Tag a Docker image to prepare it for pushing to a registry:
+      ```
+      docker tag <image_id> <username>/<repository>:<tag>
+    ```
+      - <image_id>: ID of the Docker image.
+      - <username>/<repository>:<tag>: New tag format.
+
 4. **Pushing Images to Docker Hub:**
-    - 'docker push pat67/web-app-img:latest': Push a Docker image to Docker Hub.
+    - Push a Docker image to Docker Hub:
+      ```
+        docker push <username>/<repository>:<tag>
+      ```
+        - <username>/<repository>:<tag>
 
 ## Image Information
   - **Image Name:** web-app-img
@@ -418,7 +449,7 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
       az aks show --resource-group <resource-group> --name <aks-cluster-name> --query identityProfile
     ```
     Make a note of the **clientId** under **identityProfile** for later use.   
-    
+
 5. **Assign Permissions to Managed Identity**
 
   Assign the Key Vault Secrets Officer role to the managed identity associated with AKS to enable it to retrieve and manage secrets.
