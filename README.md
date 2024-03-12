@@ -385,24 +385,34 @@ Configure Log Analytics to execute and save the following logs:
 This Section outlines the steps required to integrate Azure Kubernetes Service (AKS) with Azure Key Vault for secure secrets management within your application. By leveraging Azure Key Vault, sensitive information such as database credentials can be securely stored and accessed by your application running on AKS.
 
 1. **Creating an Azure Key Vault**
+
 Begin by creating an Azure Key Vault where sensitive information will be securely stored.
 
 2. **Assign Key Vault Administrator Role**
+
 Assign the Key Vault Administrator role to your Microsoft Entra ID user to grant necessary permissions for managing secrets within the Key Vault.
 
 3. **Create Secrets in Key Vault**
+
 Create secrets in the Key Vault for storing sensitive credentials used within the application, including server name, username, password, and database name.
 
 4. **Enable Managed Identity for AKS**
+
 Enable managed identity for the AKS cluster to allow it to authenticate and interact securely with the Key Vault.
 
 5. **Assign Permissions to Managed Identity**
 Assign the Key Vault Secrets Officer role to the managed identity associated with AKS to enable it to retrieve and manage secrets.
 
 6. **Update the Application Code**
+
 Integrate Azure Identity and Azure Key Vault libraries into the Python application code to enable communication with Azure Key Vault.
 
+  - ``` pip install azure-identity
+        pip install azure-keyvault-secrets   
+    ```
+
 7. **End-to-End Testing AKS**
+
 Deploy the modified application to the AKS cluster using Azure DevOps CI/CD pipeline. Conduct end-to-end testing within the AKS environment to validate the functionality, including secure access to Key Vault secrets.
 
 
