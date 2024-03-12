@@ -156,7 +156,7 @@ To run the application, you simply need to run the `app.py` script in this repos
       ```
         docker push <username>/<repository>:<tag>
       ```
-      - Image reference with tag: '<username>/<repository>:<tag>'
+      - Image reference with tag: '&lt;username&gt;/&lt;repository&gt;:<tag>'
 
 ## Image Information
   - **Image Name:** web-app-img
