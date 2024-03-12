@@ -405,9 +405,11 @@ Enable managed identity for the AKS cluster to allow it to authenticate and inte
 Assign the Key Vault Secrets Officer role to the managed identity associated with AKS to enable it to retrieve and manage secrets.
 
 - Assign "Key Vault Secrets Officer" role to Managed Identity
-  ```az role assignment create --role "Key Vault Secrets Officer" \
-     --assignee <managed-identity-client-id> \
-     --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+  
+  ```
+      az role assignment create --role "Key Vault Secrets Officer" \
+         --assignee <managed-identity-client-id> \
+         --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
   ```
 
 6. **Update the Application Code**
