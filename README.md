@@ -10,9 +10,8 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
 - [Architecture](#architecture)
 - [Creating an Azure End-to-End DevOps Pipeline](#creating-an-azure-end-to-End-devOps-pipeline)
   - [Delivery Date Feature: Addition and Reversion](#delivery-date-feature-addition-and-reversion)
-  - [Containerisation Process Documentation](#containerisation-process-documentation)
-  - [Docker-Commands-Documentation](#docker-commands-documentation)
-  - [Defining-Networking-Services-with-Terraform](#defining-networking-services-with-terraform)
+  - [Containerisation Process using Docker](#containerisation-process-using-docker)
+  - [Defining Networking- ervices with Terraform](#defining-networking-services-with-terraform)
   - [Defining an AKS Cluster with IaC](#defining-an-aks-cluster-with-iac)
   - [Creating an AKS Cluster with IaC](#creating-an-aks-cluster-with-iac)
   - [Kubernettes Deployment to AKS](#kubernettes-deployment-to-aks)
@@ -95,7 +94,7 @@ To run the application, you simply need to run the `app.py` script in this repos
    - **Reason for Reversion:** No longer necessary in the backend database.
    - **Action Taken:** In 'app.py', the code related to delivery date was removed. In template.html, any HTML elements or code related to displaying the delivery date were removed.
 
-## Containerization Process Documentation
+## Containerization Process using Docker
 ### Steps to Containerize the Application
 1. **Identify Application Dependencies:**
    - List all the dependencies required for the application to run.
@@ -128,7 +127,7 @@ To run the application, you simply need to run the `app.py` script in this repos
      docker run -d -p 8080:80 myapp
      ```
 
-## Docker Commands Documentation
+### Docker Commands Usage
 1. **Building Docker Image:**
     - Build a Docker image based on the Dockerfile in the current directory:
     ```
@@ -157,7 +156,7 @@ To run the application, you simply need to run the `app.py` script in this repos
       ```
         docker push <username>/<repository>:<tag>
       ```
-        - <username>/<repository>:<tag>
+      - Image reference with tag: <username>/<repository>:<tag>
 
 ## Image Information
   - **Image Name:** web-app-img
