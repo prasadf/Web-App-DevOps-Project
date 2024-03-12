@@ -386,31 +386,50 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
 
 1. **Creating an Azure Key Vault**
 
-Begin by creating an Azure Key Vault where sensitive information will be securely stored.
+  Begin by creating an Azure Key Vault where sensitive information will be securely stored.
+
+  ```
+    az keyvault create --name <key-vault-name> --resource-group <resource-group-name> --location <location>
+  ```
 
 2. **Assign Key Vault Administrator Role**
 
-Assign the Key Vault Administrator role to your Microsoft Entra ID user to grant necessary permissions for managing secrets within the Key Vault.
+  Assign the Key Vault Administrator role to your Microsoft Entra ID user to grant necessary permissions for managing secrets within the Key Vault.
+
+  ```
+    az keyvault set-policy --name <key-vault-name> --upn <user-email> --secret-permissions get list set delete --resource-group <resource-group-name>
+  ```
 
 3. **Create Secrets in Key Vault**
 
-Create secrets in the Key Vault for storing sensitive credentials used within the application, including server name, username, password, and database name.
+  Create secrets in the Key Vault for storing sensitive credentials used within the application, including server name, username, password, and database name.
 
 4. **Enable Managed Identity for AKS**
 
-Enable managed identity for the AKS cluster to allow it to authenticate and interact securely with the Key Vault.
+  Enable managed identity for the AKS cluster to allow it to authenticate and interact securely with the Key Vault.
 
+    - Launch a command-line interface on your local machine. Sign in to your Azure account using the Azure CLI.
+
+      ```
+        az aks update --resource-group <resource-group> --name <aks-cluster-name> --enable-managed-identity
+      ```
+    - Execute the following command to get information about the managed identity created for the AKS cluster:
+    ```
+      az aks show --resource-group <resource-group> --name <aks-cluster-name> --query identityProfile
+    ```
+    Make a note of the **clientId** under **identityProfile** for later use.   
+    
 5. **Assign Permissions to Managed Identity**
 
-Assign the Key Vault Secrets Officer role to the managed identity associated with AKS to enable it to retrieve and manage secrets.
+  Assign the Key Vault Secrets Officer role to the managed identity associated with AKS to enable it to retrieve and manage secrets.
 
-- Assign "Key Vault Secrets Officer" role to Managed Identity
-  
-  ```
-      az role assignment create --role "Key Vault Secrets Officer" \
-         --assignee <managed-identity-client-id> \
-         --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
-  ```
+  - Assign "Key Vault Secrets Officer" role to Managed Identity
+    
+    ```
+        az role assignment create --role "Key Vault Secrets Officer" \
+           --assignee <managed-identity-client-id> \
+           --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+    ```
 
 6. **Update the Application Code**
 
@@ -426,7 +445,7 @@ Assign the Key Vault Secrets Officer role to the managed identity associated wit
 
 7. **End-to-End Testing AKS**
 
-Deploy the modified application to the AKS cluster using Azure DevOps CI/CD pipeline. Conduct end-to-end testing within the AKS environment to validate the functionality, including secure access to Key Vault secrets.
+  Deploy the modified application to the AKS cluster using Azure DevOps CI/CD pipeline. Conduct end-to-end testing within the AKS environment to validate the functionality, including secure access to Key Vault secrets.
 
 
    
