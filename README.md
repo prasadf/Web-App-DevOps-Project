@@ -145,11 +145,11 @@ To run the application, you simply need to run the `app.py` script in this repos
 
 3. **Tagging Docker Images:**
     - Tag a Docker image to prepare it for pushing to a registry:
-      ```
+    ```
       docker tag <image_id> <username>/<repository>:<tag>
     ```
-      - <image_id>: ID of the Docker image.
-      - <username>/<repository>:<tag>: New tag format.
+      - ID of the Docker image: <image_id>
+      - New tag format: <username>/<repository>:<tag>
 
 4. **Pushing Images to Docker Hub:**
     - Push a Docker image to Docker Hub:
