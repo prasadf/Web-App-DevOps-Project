@@ -443,10 +443,12 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
       ```
         az aks update --resource-group <resource-group> --name <aks-cluster-name> --enable-managed-identity
       ```
+
     - Execute the following command to get information about the managed identity created for the AKS cluster:
     ```
       az aks show --resource-group <resource-group> --name <aks-cluster-name> --query identityProfile
     ```
+    
     Make a note of the **clientId** under **identityProfile** for later use.   
 
 5. **Assign Permissions to Managed Identity**
