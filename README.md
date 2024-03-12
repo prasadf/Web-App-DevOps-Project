@@ -75,6 +75,12 @@ To run the application, you simply need to run the `app.py` script in this repos
 
 ![DevOps Pipeline Architecture](images/DevOps-Pipeline-Architecture.png)
 
+## Creating an Azure End-to-End DevOps Pipeline
+> [!IMPORTANT]
+>
+> - You'll need to install: [Docker](https://docs.docker.com/get-docker/), [Terraform](https://developer.hashicorp.com/terraform/install), [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli), [Kubernetes](https://kubernetes.io/releases/download/).
+> - You'll also need accounts for: [Docker Hub](https://hub.docker.com/), [Azure](https://portal.azure.com/#home), [Azure DevOps](https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops), [GitHub](https://github.com/).
+
 ## Delivery Date Feature: Addition and Reversion
 
 ### Changes Made
