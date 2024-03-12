@@ -401,15 +401,26 @@ Create secrets in the Key Vault for storing sensitive credentials used within th
 Enable managed identity for the AKS cluster to allow it to authenticate and interact securely with the Key Vault.
 
 5. **Assign Permissions to Managed Identity**
+
 Assign the Key Vault Secrets Officer role to the managed identity associated with AKS to enable it to retrieve and manage secrets.
+
+- Assign "Key Vault Secrets Officer" role to Managed Identity
+  ```az role assignment create --role "Key Vault Secrets Officer" \
+     --assignee <managed-identity-client-id> \
+     --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+  ```
 
 6. **Update the Application Code**
 
-Integrate Azure Identity and Azure Key Vault libraries into the Python application code to enable communication with Azure Key Vault.
+  - Integrate Azure Identity and Azure Key Vault libraries into the Python application code to enable communication with Azure Key Vault.
+  - Modify the code to use managed identity credentials, ensuring secure retrieval of database connection details from the Key Vault.
+  - Ensure you have the following libraries installed:
 
-  - ``` pip install azure-identity
+    ``` pip install azure-identity
         pip install azure-keyvault-secrets   
     ```
+  - By incorporating the Azure Identity and Azure Key Vault libraries, coupled with the Azure Key Vault - AKS integration set up above, your AKS-hosted Python applications gain the capability of accessing secrets stored in Azure Key Vault. 
+  - This approach replaces the need for hard-coding sensitive information within your application, introducing a more secure and dynamic credential management strategy.
 
 7. **End-to-End Testing AKS**
 
