@@ -94,7 +94,7 @@ To run the application, you simply need to run the `app.py` script in this repos
    - **Reason for Reversion:** No longer necessary in the backend database.
    - **Action Taken:** In 'app.py', the code related to delivery date was removed. In template.html, any HTML elements or code related to displaying the delivery date were removed.
 
-## Containerization Process using Docker
+## Containerisation Process using Docker
 ### Steps to Containerize the Application
 1. **Identify Application Dependencies:**
    - List all the dependencies required for the application to run.
