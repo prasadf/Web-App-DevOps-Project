@@ -447,14 +447,23 @@ After configuring the CI/CD pipeline, which includes both the build and release 
    - Select **Monitoring** from the left-hand menu.
    - Click **Metrics Explorer**.
    - Add charts for:
-     - Average Node CPU Usage
+     
+     - **Average Node CPU Usage**: This chart allows you to track the CPU usage of your AKS cluster's nodes. Monitoring CPU usage helps ensure efficient resource allocation and detect potential performance issues.
+       
      ![Average Node CPU Usage](images/average-node-cpu-usage.png)
-     - Average Pod Count
+
+     - **Average Pod Count**: This chart displays the average number of pods running in your AKS cluster. It's a key metric for evaluating the cluster's capacity and workload distribution.
+     
      ![Average Pod Count](images/average-pod-count.png)
-     - Used Disk Percentage
+
+     - **Used Disk Percentage**: Monitoring disk usage is critical to prevent storage-related issues. This chart helps you track how much disk space is being utilized.
+       
      ![Used Disk Percentage](images/bytes-read-and-written-per-second.png)
-     - Bytes Read and Written per Second
+
+     - **Bytes Read and Written per Second**: Monitoring data I/O is crucial for identifying potential performance bottlenecks. This chart provides insights into data transfer rates.
+       
      ![Bytes Read and Written per Second](images/bytes-read-and-written-per-second.png)
+
 3. **Log Analytics Configuration**
 Configure Log Analytics to execute and save the following logs:
 
