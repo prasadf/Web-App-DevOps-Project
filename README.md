@@ -467,16 +467,26 @@ After configuring the CI/CD pipeline, which includes both the build and release 
 3. **Log Analytics Configuration**
 Configure Log Analytics to execute and save the following logs:
 
-   - **Average Node CPU Usage Percentage per Minute**: This configuration captures data on node-level usage at a granular level, with logs recorded per minute
+   - **Average Node CPU Usage Percentage per Minute**: This configuration captures data on node-level usage at a granular level, with logs recorded per minute.
 
-   - **Average Node Memory Usage Percentage per Minute**: Similar to CPU usage, tracking memory usage at node level allows you to detect memory-related performance concerns and efficiently allocate resources
+     ![Average Node CPU Usage Percentage per Minute](images/avg-node-cpu-usage-percentage-per-minute.png)    
+
+   - **Average Node Memory Usage Percentage per Minute**: Similar to CPU usage, tracking memory usage at node level allows you to detect memory-related performance concerns and efficiently allocate resources.
+
+     ![Average Node Memory Usage Percentage per Minute](images/avg-node-memory-usage-percentage-per-minute.png)
 
    - **Pods Counts with Phase**: This log configuration provides information on the count of pods with different phases, such as Pending, Running, or Terminating. It offers insights into pod lifecycle management and helps ensure the cluster's workload is appropriately distributed.
 
-   - **Find Warning Value in Container Logs**: By configuring Log Analytics to search for `warning` values in container logs, you proactively detect issues or errors within your containers, allowing for prompt troubleshooting and issues resolution
+     ![Pods Counts with Phase](images/pods-count-with-phase.png)
+
+   - **Find Warning Value in Container Logs**: By configuring Log Analytics to search for `warning` values in container logs, you proactively detect issues or errors within your containers, allowing for prompt troubleshooting and issues resolution.
+
+     ![Find Warning Value in Container Logs](images/container-logs-table.png)
 
 
-   - **Monitoring Kubernetes Events**: Monitoring Kubernetes events, such as pod scheduling, scaling activities, and errors, is essential for tracking the overall health and stability of the cluster
+   - **Monitoring Kubernetes Events**: Monitoring Kubernetes events, such as pod scheduling, scaling activities, and errors, is essential for tracking the overall health and stability of the cluster.
+
+     ![Monitoring Kubernetes Events](images/kubernetes-events.png)
 
 4. **Set Up Disk Used Percentages Alarm**
   - Navigate to AKS cluster resource.
@@ -489,6 +499,8 @@ Configure Log Analytics to execute and save the following logs:
   - Select **Monitoring** from the left-hand menu.
   - Click **Alerts**.
   - Adjust existing alert rules for CPU and memory to trigger when they exceed 80%.
+
+    ![Alert rules](images/alert-rules.png)
 
 ## AKS Integration with Azure Key Vault for Secrets Management
 This Section outlines the steps required to integrate Azure Kubernetes Service (AKS) with Azure Key Vault for secure secrets management within your application. By leveraging Azure Key Vault, sensitive information such as database credentials can be securely stored and accessed by your application running on AKS.
@@ -551,7 +563,7 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
 
   ``` 
   pip install azure-identity
-      pip install azure-keyvault-secrets   
+  pip install azure-keyvault-secrets   
   ```
   - By incorporating the Azure Identity and Azure Key Vault libraries, coupled with the Azure Key Vault - AKS integration set up above, your AKS-hosted Python applications gain the capability of accessing secrets stored in Azure Key Vault. 
   - This approach replaces the need for hard-coding sensitive information within your application, introducing a more secure and dynamic credential management strategy.
