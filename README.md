@@ -450,19 +450,19 @@ After configuring the CI/CD pipeline, which includes both the build and release 
      
      - **Average Node CPU Usage**: This chart allows you to track the CPU usage of your AKS cluster's nodes. Monitoring CPU usage helps ensure efficient resource allocation and detect potential performance issues.
        
-     ![Average Node CPU Usage](images/average-node-cpu-usage.png)
+       ![Average Node CPU Usage](images/average-node-cpu-usage.png)
 
      - **Average Pod Count**: This chart displays the average number of pods running in your AKS cluster. It's a key metric for evaluating the cluster's capacity and workload distribution.
      
-     ![Average Pod Count](images/average-pod-count.png)
+       ![Average Pod Count](images/average-pod-count.png)
 
      - **Used Disk Percentage**: Monitoring disk usage is critical to prevent storage-related issues. This chart helps you track how much disk space is being utilized.
        
-     ![Used Disk Percentage](images/used-disk-percentage.png)
+       ![Used Disk Percentage](images/used-disk-percentage.png)
 
      - **Bytes Read and Written per Second**: Monitoring data I/O is crucial for identifying potential performance bottlenecks. This chart provides insights into data transfer rates.
        
-     ![Bytes Read and Written per Second](images/bytes-read-and-written-per-second.png)
+       ![Bytes Read and Written per Second](images/bytes-read-and-written-per-second.png)
 
 3. **Log Analytics Configuration**
 Configure Log Analytics to execute and save the following logs:
@@ -498,7 +498,7 @@ Configure Log Analytics to execute and save the following logs:
   - Navigate to AKS cluster resource.
   - Select **Monitoring** from the left-hand menu.
   - Click **Alerts**.
-  - Adjust existing alert rules for CPU and memory to trigger when they exceed 80%.
+  - Adjust existing alert rules for CPU and memory to trigger when they exceed 80%. CPU and memory are critical resources in your AKS cluster. When they are heavily utilized, it can lead to decreased application performance. By setting alert rules to trigger at 80%, you ensure that you are notified when these resources are approaching critical levels.
 
     ![Alert rules](images/alert-rules.png)
 
@@ -570,9 +570,9 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
 
 7. **End-to-End Testing AKS**
 
-  - Deploy the modified application to the AKS cluster using Azure DevOps CI/CD pipeline. 
+  - Deploy the modified application to the AKS cluster using the pre-established Azure DevOps CI/CD pipeline. 
   - Conduct end-to-end testing within the AKS environment to validate the functionality, including secure access to Key Vault secrets  directly from the Azure DevOps CI/CD pipeline.
-  - Test the functionality of the application to ensure correct operation, validating the CI/CD pipeline effectiveness.
+  - Test the functionality of the application to ensure correct operation, validating the CI/CD pipeline effectiveness, ensuring secure access to Key Vault secrets directly from the Azure DevOps CI/CD pipeline.
 
 
 <p>
