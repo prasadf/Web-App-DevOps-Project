@@ -189,7 +189,7 @@ This documentation outlines the process of defining networking services using In
 1. **Create Terraform Project and Modules:**
    - Create a project folder with a descriptive name for your Terraform project, such as **aks-terraform**.
    - The project should be organized into two Terraform modules:
-       - **networking-module**: for provisioning the necessary Azure Networking Services for an AKS cluster
+       - **networking-module**: for provisioning the necessary Azure Networking Services for an AKS cluster.
        - **aks-cluster-module**: for provisioning the Kubernetes cluster itself.
  
 2. **Define the Network Module Input Variables:**
@@ -201,7 +201,7 @@ This documentation outlines the process of defining networking services using In
      
 3. **Define Networking Resources and NSG Rules:**
    - Inside the networking module directory create a **main.tf** file and define the essential networking resources for an AKS cluster as follows. 
-     - Azure Resource Group: Name this resource by referencing the **resource_group_name** variable created earlier
+     - Azure Resource Group: Name this resource by referencing the **resource_group_name** variable created earlier.
      - Virtual Network (VNet): **aks-vnet**
      - Control Plane Subnet: **control-plane-subnet**
      - Worker Node Subnet: **worker-node-subnet**
@@ -212,7 +212,7 @@ This documentation outlines the process of defining networking services using In
        - Both rules should only allow inbound traffic from your public IP address.
  
 4. **Define the Networking Module Output Variables:**
-   - Inside the networking module directory create a **outputs.tf** file 
+   - Inside the networking module directory create a **outputs.tf** file. 
    - Define the following output variables:
      - **vnet_id** - variable that will store the ID of the previously created VNet.
      - **control_plane_subnet_id** - variable that will hold the ID of the control plane subnet within the VNet.
@@ -222,7 +222,8 @@ This documentation outlines the process of defining networking services using In
        
 4. **Initialise the Newtworking Module:**
    - Initialise the networking module to ensure it is ready to use within your main project. 
-   - 'terraform init'
+   - ```terraform init
+     ```
 
 ## Defining an AKS Cluster with IaC using Terraform
 
@@ -280,19 +281,19 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 2. **Integrate the Networking Module**
     - Integrate networking module to include networking resources like virtual networks and subnets.
     - Specify input variables:
-      - **resource_group_name**: Set descriptive name for the networking resource group, such as `networking-resource-group`
+      - **resource_group_name**: Set descriptive name for the networking resource group, such as `networking-resource-group`.
       - **location**: Azure region for deployment that is geographically close to you to improve latency (e.g. "UK South").
       - **vnet_address_space**: Address space for the virtual network. (e.g. `["10.0.0.0/16"]`)
 
 3. **Integrate the Cluster Module**
     - Integrate the cluster module in the main project configuration file.This step connects the AKS cluster specifications to the main project, as well as allowing you to provision the cluster within the previously defined networking infrastructure.
     - Set `cluster_name` to `terraform-aks-cluster`
-    - Set `location` to an Azure region that is geographically close to you to improve latency (e.g. "`UK South`")
-    - Set `dns_prefix` to `myaks-project`
-    - Set `service_principal_client_id` and `service_principal_secret` to your service principal credentials
-    - Use variables referencing the output variables from the networking module for the other input variables required by the cluster module such as: resource_group_name, vnet_id, control_plane_subnet_id, worker_node_subnet_id and aks_nsg_id
+    - Set `location` to an Azure region that is geographically close to you to improve latency (e.g. "`UK South`").
+    - Set `dns_prefix` to `myaks-project`.
+    - Set `service_principal_client_id` and `service_principal_secret` to your service principal credentials.
+    - Use variables referencing the output variables from the networking module for the other input variables required by the cluster module such as: resource_group_name, vnet_id, control_plane_subnet_id, worker_node_subnet_id and aks_nsg_id.
       
-    - Use variables referencing the output variables from the networking module for the other input variables required by the cluster module such as: `resource_group_name`, `vnet_id`, `control_plane_subnet_id`, `worker_node_subnet_id` and `aks_nsg_id`
+    - Use variables referencing the output variables from the networking module for the other input variables required by the cluster module such as: `resource_group_name`, `vnet_id`, `control_plane_subnet_id`, `worker_node_subnet_id` and `aks_nsg_id`.
      
 4. **Apply the Main Configuration**
     - Initialise Terraform in the main project directory. `cd` into `aks-terraform` and run the initialisiation command `terraform init`.
