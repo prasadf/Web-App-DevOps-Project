@@ -11,7 +11,6 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
 - [Technology Stack](#technology-stack)
 - [Architecture](#architecture)
 - [Creating an Azure End-to-End DevOps Pipeline](#creating-an-azure-end-to-End-devOps-pipeline)
-  - [Delivery Date Feature: Addition and Reversion](#delivery-date-feature-addition-and-reversion)
   - [Containerisation Process using Docker](#containerisation-process-using-docker)
   - [Defining Networking- ervices with Terraform](#defining-networking-services-with-terraform)
   - [Defining an AKS Cluster with IaC](#defining-an-aks-cluster-with-iac)
@@ -51,6 +50,13 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
 
 - <details>
   <summary>If requested again, follow these instructions:</summary>
+  
+   - **Files Modified:** `app.py` and `templates\template.html`.
+
+   - **Description:** The delivery date feature was added to enhance the functionality of the web app.
+     The feature aimed to display the expected delivery date for orders placed through the app. 
+
+   - **Implementation Details:**  In `app.py` and `template.html`, delivery date was added.
 
   1.  In `app.py` modify the following:
 
@@ -112,25 +118,6 @@ To run the application, you simply need to run the `app.py` script in this repos
 >
 > - You'll need to install: [Docker](https://docs.docker.com/get-docker/), [Terraform](https://developer.hashicorp.com/terraform/install), [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli), [Kubernetes](https://kubernetes.io/releases/download/).
 > - You'll also need accounts for: [Docker Hub](https://hub.docker.com/), [Azure](https://portal.azure.com/#home), [Azure DevOps](https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops), [GitHub](https://github.com/).
-
-## Delivery Date Feature: Addition and Reversion
-
-### Changes Made
-1. Addition of Delivery Date Feature<br>
-   - **Files Modified:** 'app.py' and templates\template.html.
-
-   - **Description:** The delivery date feature was added to enhance the functionality of the web app.
-     The feature aimed to display the expected delivery date for orders placed through the app. 
-
-   - **Implementation Details:**  In 'app.py' and template.html, delivery date was added.
-  
-2. Reversion of Delivery Date Feature<br>
-   - **Files Modified:** 'app.py' and templates\template.html.
-
-   - **Description:** Due to unforeseen complications or changes in project requirements, the delivery date feature was reverted.
-
-   - **Reason for Reversion:** No longer necessary in the backend database.
-   - **Action Taken:** In 'app.py', the code related to delivery date was removed. In template.html, any HTML elements or code related to displaying the delivery date were removed.
 
 ## Containerisation Process using Docker
 ### Steps to Containerize the Application
