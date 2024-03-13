@@ -134,13 +134,11 @@ To run the application, you simply need to run the `app.py` script in this repos
       RUN pip install -r requirements.txt
       COPY . .
       CMD ["python", "app.py"]
-
      ```
      
 3. **Build Docker Image:**
    - Use the Docker build command to create a Docker image based on the Dockerfile.
    - Example: 
-
      ```
       docker build -t myapp .
      ```
@@ -149,39 +147,39 @@ To run the application, you simply need to run the `app.py` script in this repos
    - Start a Docker container using the built image.
    - Example: 
      ```
-     docker run -d -p 8080:80 myapp
+      docker run -d -p 8080:80 myapp
      ```
 
 ### Docker Commands Usage
 1. **Building Docker Image:**
-    - Build a Docker image based on the Dockerfile in the current directory:
-    ```
+   - Build a Docker image based on the Dockerfile in the current directory:
+     ```
       docker build -t <image_name> .
-    ```
-      - '-t': Tag the image with a name.
+     ```
+   - `-t`: Tag the image with a name.
  
 2. **Running Containers:**
     - Start a Docker container in detached mode, mapping a host port to a container port:
       ```
-        docker run -d -p <host_port>:<container_port> <image_name> 
+       docker run -d -p <host_port>:<container_port> <image_name> 
       ```
-      - '-d': Run the container in detached mode.
-      - '-p': Specify port mapping.
+    - `-d`: Run the container in detached mode.
+    - `-p`: Specify port mapping.
 
 3. **Tagging Docker Images:**
     - Tag a Docker image to prepare it for pushing to a registry:
-    ```
-      docker tag <image_id> <username>/<repository>:<tag>
-    ```
-      - ID of the Docker image: **&lt;image_id&gt;**
-      - New tag format: **&lt;username&gt;/&lt;repository&gt;:&gt;tag&gt;**
+      ```
+       docker tag <image_id> <username>/<repository>:<tag>
+      ```
+    - ID of the Docker image: `<image_id>`
+    - New tag format: `<username>/<repository>:<tag>`
 
 4. **Pushing Images to Docker Hub:**
     - Push a Docker image to Docker Hub:
       ```
-        docker push <username>/<repository>:<tag>
+       docker push <username>/<repository>:<tag>
       ```
-      - Image reference with tag: **&lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;**
+    - Image reference with tag: `<username>/<repository>:<tag>`
 
 ## Image Information
   - **Image Name:** web-app-img
