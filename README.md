@@ -16,7 +16,7 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
   - [Defining an AKS Cluster with IaC using Terraform](#defining-an-aks-cluster-with-iac-using-terraform)
   - [Creating an AKS Cluster with IaC using Terraform](#creating-an-aks-cluster-with-iac-using-terraform)
   - [Kubernettes Deployment to AKS](#kubernettes-deployment-to-aks)
-  - [CI/CD Pipeline with Azure DevOps](#ci/cd-pipeline-with-azure-devops)
+  - [CI/CD Pipeline with Azure DevOps](#cicd-pipeline-with-azure-devops)
   - [AKS Cluster Monitorings](#aks-cluster-monitoring)
   - [AKS Integration with Azure Key Vault for Secrets Management](#aks-integration-with-azure-key-vault-for-secrets-management)
 - [Contributors](#contributors)
