@@ -396,39 +396,39 @@ The application we've been developing is an internal tool designed for the compa
 
 ## CI/CD Pipeline with Azure DevOps
 
-1. **Azure DevOps Project Setup**
+1. **Create an Azure DevOps Project**
   - Create a new Azure DevOps project within the Azure DevOps account. 
-  - Log into Azure DevOps with the same email account that's associated with the Azure account.
+  - Log into [Azure DevOps](https://dev.azure.com) with the same email account that's associated with the Azure account.
 
-2. **Azure DevOps Pipeline Initialization**
-  - Configure the source repository for the pipeline using GitHub.
-  - Select the repository containing the application code.
-  - Create the pipeline using a Starter Pipeline template for further customisation.
+2. **Initiate Azure DevOps Setup**
+  - The first essential step involves configuring the source repository for the pipeline. Choose GitHub as the source control system where your application code is hosted, ensuring you select the repository you've been working on so far.
+  - As an initial configuration, create the pipeline using a **Starter Pipeline** template, which will serve as the foundation for further customisation in upcoming tasks.
 
-3. **Azure DevOps-Docker Hub Connection**
+3. **Establish an Azure DevOps-Docker Hub Connection**
   - Set up a service connection between Azure DevOps and the Docker Hub account, facilitating the seamless integration of the CI/CD pipeline with the Docker Hub container registry as follows:
-    - Create a personal access token on Docker Hub.
-    - Configure an Azure DevOps service connection utilising the Docker Hub token.
-    - Successfully establish the connection between Azure DevOps and Docker Hub.
+  - Create a personal access token on Docker Hub.
+  - Configure an Azure DevOps service connection utilising the Docker Hub token.
+  - Successfully establish the connection between Azure DevOps and Docker Hub.
 
 4. **Pipeline Configuration for Docker Image Build and Push**
-  - Modify the configuration of your pipeline to enable it to build and push a Docker image to Docker Hub. Follow these steps:
-    - Add Docker task with the buildandPush command to the pipeline.
+Modify the configuration of your pipeline to enable it to build and push a Docker image to Docker Hub. Follow these steps:
+    - Add Docker task with the `buildandPush` command to the pipeline. Use the same Docker image name as previously when you were pushing to Docker Hub from your local development environment.
     - Configure the pipeline to trigger on each push to the main branch.
-    - Run the pipeline and test the Docker image functionality locally. 
+    - Run the pipeline and test the Docker image functionality locally. You can do so by pulling the latest version from Docker Hub on your local environment. Run the container and test its functionality to ensure the application works as expected.
 
 5. **Azure DevOps-AKS Connection Establishment**
-  - Create and configure an AKS service connection within Azure DevOps.
-  - Establish a secure link between the CI/CD pipeline and the AKS cluster.
+Create and configure an AKS service connection within Azure DevOps.This service connection will help establish a secure link between the CI/CD pipeline and the AKS cluster, enabling seamless deployments and effective management.
 
 6. **Pipeline Configuration for Kubernetes Deployment**
-  - Modify the CI/CD pipeline to incorporate the Deploy to Kubernetes task with the deploy kubectl command.
+  - Modify the CI/CD pipeline to incorporate the **Deploy to Kubernetes** task with the deploy `kubectl` command.
   - Leverage the deployment manifest available in the application repository.
   - Utilise the established AKS connection for automatic deployment to the AKS cluster.
 
 7. **Testing and Validation of CI/CD Pipeline**
-  - Monitor the status of pods within the AKS cluster to confirm correct creation.
-  - Initiate port forwarding using kubectl to securely access the application running on AKS.
+After configuring the CI/CD pipeline, which includes both the build and release components, it's crucial to test and validate its functionality. This step ensures the seamless execution of the deployment process and verifies that the application performs as expected on the AKS cluster.
+
+  - Monitor the status of pods within the AKS cluster to confirm correct creation of pods.
+  - Initiate **port forwarding** using `kubectl` to securely access the application running on AKS.
   - Test the functionality of the application to ensure correct operation, validating the CI/CD pipeline effectiveness.
 
 ## AKS Cluster Monitoring
