@@ -458,7 +458,7 @@ After configuring the CI/CD pipeline, which includes both the build and release 
 
      - **Used Disk Percentage**: Monitoring disk usage is critical to prevent storage-related issues. This chart helps you track how much disk space is being utilized.
        
-     ![Used Disk Percentage](images/bytes-read-and-written-per-second.png)
+     ![Used Disk Percentage](images/used-disk-percentage.png)
 
      - **Bytes Read and Written per Second**: Monitoring data I/O is crucial for identifying potential performance bottlenecks. This chart provides insights into data transfer rates.
        
