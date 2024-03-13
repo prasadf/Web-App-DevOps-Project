@@ -40,6 +40,36 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
 
 - **Data Validation:** Ensure data accuracy and completeness with required fields, date restrictions, and card number validation.
 
+### Enhancements
+
+- **Adding a Delivery Date Column to Order List:**
+
+   <table style="border-style:solid;border-width:thin;border-left-width:thick;">
+   <tr><th>📝 NOTE</th></tr>
+   <tr><td>This feature was requested and then reverted. See <a href="https://github.com/prasadf/Web-App-DevOps-Project/issues/1">issue #1</a></td></tr> 
+   </table>
+
+- <details>
+  <summary>If requested again, follow these instructions:</summary>
+
+  1.  In `app.py` modify the following:
+
+      a. `Order` class to include `delivery_date = Column('Delivery Date', DateTime)`
+
+      b. `@app.route` `add_order` function to include `delivery_date = request.form['delivery_date']`
+
+      c. `new_order` object to include `delivery_date=delivery_date`
+
+  2.  In `order.html` modify the following:
+
+      a. `<th>` elements to include `<th>Delivery Date</th>`
+
+      b. `<td>` elements to include `<td>{{ order.delivery_date }}</td>`
+
+      c. `<form>` element to include `<label for="delivery_date">Delivery Date:</label>` and `<input type="date" id="delivery_date" name="delivery_date"><br><br>`
+
+  </details>
+
 ## Getting Started
 
 ### Prerequisites
