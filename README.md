@@ -1,3 +1,5 @@
+<a id="readme-top"></a>
+
 # Web-App-DevOps-Project
 
 Welcome to the Web App DevOps Project repo! This application allows you to efficiently manage and track orders for a potential business. It provides an intuitive user interface for viewing existing orders and adding new ones.
@@ -406,16 +408,16 @@ Configure Log Analytics to execute and save the following logs:
    - **Monitoring Kubernetes Events**: Monitoring Kubernetes events, such as pod scheduling, scaling activities, and errors, is essential for tracking the overall health and stability of the cluster
 
 4. **Set Up Disk Used Percentages Alarm**
-   - Navigate to AKS cluster resource.
-   - Select **Monitoring** from the left-hand menu.
-   - Click **Alerts**.
-   - Configure an alert rule to trigger when used disk percentage exceeds 90%, with check interval of 5 minutes and loopback period of 15 minutes. Set email notifications for alarm triggers.
+  - Navigate to AKS cluster resource.
+  - Select **Monitoring** from the left-hand menu.
+  - Click **Alerts**.
+  - Configure an alert rule to trigger when used disk percentage exceeds 90%, with check interval of 5 minutes and loopback period of 15 minutes. Set email notifications for alarm triggers.
     
 5. **Modify CPU and Memory Alert Rules**
-   - Navigate to AKS cluster resource.
-   - Select **Monitoring** from the left-hand menu.
-   - Click **Alerts**.
-   - Adjust existing alert rules for CPU and memory to trigger when they exceed 80%.
+  - Navigate to AKS cluster resource.
+  - Select **Monitoring** from the left-hand menu.
+  - Click **Alerts**.
+  - Adjust existing alert rules for CPU and memory to trigger when they exceed 80%.
 
 ## AKS Integration with Azure Key Vault for Secrets Management
 This Section outlines the steps required to integrate Azure Kubernetes Service (AKS) with Azure Key Vault for secure secrets management within your application. By leveraging Azure Key Vault, sensitive information such as database credentials can be securely stored and accessed by your application running on AKS.
@@ -442,19 +444,19 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
 
 4. **Enable Managed Identity for AKS**
 
-  Enable managed identity for the AKS cluster to allow it to authenticate and interact securely with the Key Vault.
+  - Enable managed identity for the AKS cluster to allow it to authenticate and interact securely with the Key Vault.
 
   - Launch a command-line interface on your local machine. Sign in to your Azure account using the Azure CLI.
      
-      ```
-        az aks update --resource-group <resource-group> --name <aks-cluster-name> --enable-managed-identity
-      ```
+  ```
+    az aks update --resource-group <resource-group> --name <aks-cluster-name> --enable-managed-identity
+  ```
   
   - Execute the following command to get information about the managed identity created for the AKS cluster:
 
-      ```
-        az aks show --resource-group <resource-group> --name <aks-cluster-name> --query identityProfile
-      ```
+  ```
+    az aks show --resource-group <resource-group> --name <aks-cluster-name> --query identityProfile
+  ```
 
   Make a note of the **clientId** under **identityProfile** for later use.   
 
@@ -464,11 +466,11 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
 
   - Assign "Key Vault Secrets Officer" role to Managed Identity
     
-    ```
-        az role assignment create --role "Key Vault Secrets Officer" \
-           --assignee <managed-identity-client-id> \
-           --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
-    ```
+  ```
+  az role assignment create --role "Key Vault Secrets Officer" \
+     --assignee <managed-identity-client-id> \
+     --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+  ```
 
 6. **Update the Application Code**
 
@@ -476,22 +478,33 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
   - Modify the code to use managed identity credentials, ensuring secure retrieval of database connection details from the Key Vault.
   - Ensure you have the following libraries installed:
 
-    ``` pip install azure-identity
-        pip install azure-keyvault-secrets   
-    ```
+  ``` 
+  pip install azure-identity
+      pip install azure-keyvault-secrets   
+  ```
   - By incorporating the Azure Identity and Azure Key Vault libraries, coupled with the Azure Key Vault - AKS integration set up above, your AKS-hosted Python applications gain the capability of accessing secrets stored in Azure Key Vault. 
   - This approach replaces the need for hard-coding sensitive information within your application, introducing a more secure and dynamic credential management strategy.
 
 7. **End-to-End Testing AKS**
 
-  Deploy the modified application to the AKS cluster using Azure DevOps CI/CD pipeline. Conduct end-to-end testing within the AKS environment to validate the functionality, including secure access to Key Vault secrets.
+  - Deploy the modified application to the AKS cluster using Azure DevOps CI/CD pipeline. 
+  - Conduct end-to-end testing within the AKS environment to validate the functionality, including secure access to Key Vault secrets  directly from the Azure DevOps CI/CD pipeline.
+  - Test the functionality of the application to ensure correct operation, validating the CI/CD pipeline effectiveness.
 
 
-   
+<p>
+  <a href="#readme-top">back to top</a>
+</p>
+
 ## Contributors 
 
 - [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))
+- [Prasad Fernando]([https://github.com/yourusername](https://github.com/prasadf))
 
 ## License
 
 This project is licensed under the MIT License. For more details, refer to the [LICENSE](LICENSE) file.
+
+<p>
+  <a href="#readme-top">back to top</a>
+</p>
