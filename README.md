@@ -454,7 +454,7 @@ After configuring the CI/CD pipeline, which includes both the build and release 
      - Used Disk Percentage
      ![Used Disk Percentage](images/bytes-read-and-written-per-second.png)
      - Bytes Read and Written per Second
-     ![Bytes Read and Written per Second](images/avg-byte-read-write-per-sec.png)
+     ![Bytes Read and Written per Second](images/bytes-read-and-written-per-second.png)
 3. **Log Analytics Configuration**
 Configure Log Analytics to execute and save the following logs:
 
