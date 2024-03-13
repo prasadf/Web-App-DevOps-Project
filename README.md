@@ -260,8 +260,8 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
     - Use the `terraform init` command in the cluster module directory to initialise the cluster.
       ```
        terraform init
-      ``
-
+      ```
+      
 ## Creating an AKS Cluster with IaC using Terraform
 
 1. **Define Project Main Configuration:**
@@ -333,51 +333,66 @@ To provision an AKS (Azure Kubernetes Service) cluster using Infrastructure as C
 
 ## Kubernettes Deployment to AKS
 
-**1. Deployment and Service Manifests**
-  **Deployment Manifest**:
-- Create a Kubernetes manifest file named `application-manifest.yaml`.
+**1. Kubernetes Manifest Definition - Deployment**
+- Create a Kubernetes manifest file named `application-manifest.yaml` that acts as a central reference for managing the containerized application.
 - Define a Deployment named `flask-app-deployment` to deploy the containerized web application.
-- Specifie two replicas for scalability and high availability.
-- Used labels (`app: flask-app`) to uniquely identify the application and its pods.
+- Specify two replicas for scalability and high availability.
+- Within the selector field, use the `matchLabels` section to define a label that uniquely identifies your application. For example, you could use the label `app: flask-app`. This label will allow Kubernetes to identify which pods the Deployment should manage.
 - Configure the manifest to use the container image hosted on Docker Hub.
-- Expose port 5000 for communication within the AKS cluster.
-- Implement Rolling Updates deployment strategy for seamless updates.
+- Expose port 5000 for communication within the AKS cluster. This port servers as the gateway for accessing the application's user interface, as defined in the application code.
+- Implement Rolling Updates deployment strategy for seamless updates. Ensure that, during updates, a maximum of one pod deploys while one pod becomes temporarily unavailable, maintaining application availability.
 
-  **Service Manifest**:
-- Add a service named `flask-app-service` for internal communication within the AKS cluster.
-- Align selector with the labels of Deployment pods (`app: flask-app`).
-- Configure the service to use TCP protocol on port 80, with targetPort set to 5000.
-- Set the service type to ClusterIP for internal service within the AKS cluster.
+**2. Kubernetes Manifest Definition - Service**
+- Add a Kubernetes Service manifest to the existing file application-manifest.yaml to facilitate internal communication within the AKS cluster.
+- Add a service named `flask-app-service` for routing internal communication within the AKS cluster.
+- Ensure that the selector matches the labels (`app: flask-app`) of the previously defined pods in the Deployment manifest. This alignment guarantees that the traffic is efficiently directed to the appropriate pods, maintaining seamless internal communication within the AKS cluster.
+- Configure the service to use TCP protocol on `port 80`, with targetPort set to `5000`.
+- Set the service type to `ClusterIP` for internal service within the AKS cluster.
 
-**2. Deployment Strategy**
-- Chose the Rolling Updates deployment strategy to ensure seamless application updates while maintaining availability. 
-- This strategy allows one pod to deploy while another remains available, minimising downtime and ensuring continuous service availability. 
-- It aligns with our application's requirements for reliability and scalability.
+**3. Deploying Kubernetes Manifest to AKS**
+- Before deploying the Kubernetes manifests to your AKS cluster, make ensure you are in the correct context, which in this case is the Terraform-provisioned AKS cluster. The context specifies the cluster and user details for your AKS cluster, ensuring the deployment occurs in the intended environment.
 
-**3. Testing and Validation**
+  - Use the command `kubectl config get-contexts`
+    
+- Once you have ensured that the correct context is set, proceed with the deployment of the Kubernetes manifests. Apply the manifest and monitor the command-line interface for feedback on the deployment process.
+
+  - `cd` to the root directory of your project and use the command:
+  ```
+  kubectl apply -f application-manifest.yaml
+  ```
+- After the deployment has successfully completed, take a moment to verify the status and details of the deployed pods and services. This step ensures that they are running as expected and confirm the reliability of the deployment.
+
+  - Run the following commands:
+    - `kubectl get deployments`
+    - `kubectl get pods`
+    - `kubectl get services`
+
+**4. Testing and Validating Deployments on AKS**
+The application we've been developing is an internal tool designed for the company's employees and is not intended for external users. Given its internal nature, you can efficiently assess the deployment by performing port forwarding to a local machine. 
+
+  **Testing Process**:
+  - Verify the status and details of pods and services within the AKS cluster. Ensure that the pods are running, and the services are correctly exposed within the cluster.
+    - Run the following commands:
+      - `kubectl get deployments`
+      - `kubectl get pods`
+      - `kubectl get services`
+      - `kubectl cluster-info`
+  - Once you've confirmed the health of your pods and services, initiate port forwarding to a local machine using `kubectl port-forward <pod-name> 5000:5000`.
+  - Accessed the web application locally at http://127.0.0.1:5000.
+  - Thoroughly test the functionality, particularly focusing on the orders table and Add Order functionality.
+
+  **Distribution Plan**
+    
+  **To distribute the application to other internal users:**
+  - Implement an Ingress controller to expose the application securely to internal users without relying on port forwarding.
+  - Utilise Kubernetes RBAC (Role-Based Access Control) to manage access permissions within the cluster.
+  - Provide documentation and training sessions for internal users on accessing the application via the established Ingress endpoint.
   
-**Testing Process**:
-- Verify the status and details of pods and services within the AKS cluster.
-- Initiate port forwarding to a local machine using `kubectl port-forward <pod-name> 5000:5000`.
-- Accessed the web application locally at http://127.0.0.1:5000.
-- Thoroughly test the functionality, particularly focusing on the orders table and Add Order functionality.
-   
-**Validation**:
-- Ensured that the pods were running and services were correctly exposed.
-- Confirmed the functionality and reliability of the application within the AKS cluster.
-
-**4. Distribution Plan**
-  
-**To distribute the application to other internal users:**
-- Implement an Ingress controller to expose the application securely to internal users without relying on port forwarding.
-- Utilise Kubernetes RBAC (Role-Based Access Control) to manage access permissions within the cluster.
-- Provide documentation and training sessions for internal users on accessing the application via the established Ingress endpoint.
-
-**For external users:**
-- Utilise a secure Azure Application gateway or load balancer to expose the application securely.
-- Implement HTTPS with SSL certificates for encrypted communication.
-- Implement authentication and authorisation mechanisms, such as Azure Entra ID and RBAC, to ensure secure access based on roles.
-- Regularly update security configurations and monitor access logs for potential vulnerabilities.
+  **For external users:**
+  - Utilise a secure Azure Application gateway or load balancer to expose the application securely.
+  - Implement HTTPS with SSL certificates for encrypted communication.
+  - Implement authentication and authorisation mechanisms, such as Azure Entra ID and RBAC, to ensure secure access based on roles.
+  - Regularly update security configurations and monitor access logs for potential vulnerabilities.
 
 ## CI/CD Pipeline with Azure DevOps
 
