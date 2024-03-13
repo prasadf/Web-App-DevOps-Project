@@ -581,8 +581,8 @@ This Section outlines the steps required to integrate Azure Kubernetes Service (
 
 ## Contributors 
 
-- [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))
-- [Prasad Fernando]([https://github.com/yourusername](https://github.com/prasadf))
+- [Maya Iuga](https://github.com/maya-a-iuga)
+- [Prasad Fernando](https://github.com/prasadf)
 
 ## License
 
