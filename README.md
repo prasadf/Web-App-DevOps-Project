@@ -220,9 +220,10 @@ This documentation outlines the process of defining networking services using In
      - **networking_resource_group_name** - variable that will provide the name of the Azure Resource Group where the networking resources were provisioned in.
      - **aks_nsg_id** - variable that will store the ID of the Network Security Group (NSG).
        
-4. **Initialise the Newtworking Module:**
+4. **Initialise the Networking Module:**
    - Initialise the networking module to ensure it is ready to use within your main project. 
-   - ```terraform init
+     ```
+      terraform init
      ```
 
 ## Defining an AKS Cluster with IaC using Terraform
