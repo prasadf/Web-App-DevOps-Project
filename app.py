@@ -3,6 +3,8 @@ from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
+from azure.identity import ManagedIdentityCredential
+from azure.keyvault.secrets import SecretClient
 import pyodbc
 import os
 
@@ -10,11 +12,18 @@ import os
 app = Flask(__name__)
 
 # database connection 
-server = 'devops-project-server.database.windows.net'
-database = 'orders-db'
-username = 'maya'
-password = 'AiCore1237'
-driver= '{ODBC Driver 18 for SQL Server}'
+# Replace these values with your Key Vault details
+key_vault_url = "https://key-vault-pra.vault.azure.net/"
+
+# Set up Azure Key Vault client with Managed Identity
+credential = ManagedIdentityCredential()
+secret_client = SecretClient(vault_url=key_vault_url, credential=credential)
+
+# Access the secret values from Key Vault
+database = secret_client.get_secret("database-name").value
+server = secret_client.get_secret("server-name").value
+username = secret_client.get_secret("server-username").value
+password = secret_client.get_secret("server-password").value
 
 # Create the connection string
 connection_string=f'Driver={driver};\
@@ -46,6 +55,7 @@ class Order(Base):
     product_quantity = Column('Product Quantity', Integer)
     order_date = Column('Order Date', DateTime)
     shipping_date = Column('Shipping Date', DateTime)
+    
 
 # define routes
 # route to display orders
@@ -86,6 +96,7 @@ def add_order():
     order_date = request.form.get('order_date')
     shipping_date = request.form.get('shipping_date')
     
+    
     # Create a session to interact with the database
     session = Session()
 
@@ -99,6 +110,7 @@ def add_order():
         product_quantity=product_quantity,
         order_date=order_date,
         shipping_date=shipping_date
+        
     )
 
     # Add the new order to the session and commit to the database
