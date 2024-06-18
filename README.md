@@ -12,7 +12,7 @@ Welcome to the Web App DevOps Project repo! This application allows you to effic
 - [Architecture](#architecture)
 - [Creating an Azure End-to-End DevOps Pipeline](#creating-an-azure-end-to-End-devOps-pipeline)
   - [Containerisation Process using Docker](#containerisation-process-using-docker)
-  - [Defining Networking- ervices with Terraform](#defining-networking-services-with-terraform)
+  - [Defining Networking- services with Terraform](#defining-networking-services-with-terraform)
   - [Defining an AKS Cluster with IaC using Terraform](#defining-an-aks-cluster-with-iac-using-terraform)
   - [Creating an AKS Cluster with IaC using Terraform](#creating-an-aks-cluster-with-iac-using-terraform)
   - [Kubernettes Deployment to AKS](#kubernettes-deployment-to-aks)
